@@ -1,0 +1,37 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question Paper Generator</title>
+  <style>
+    button {
+      /*display: flex;*/
+      align-items: center;
+      justify-content: center;
+      height: 10vh;
+      margin: 10px;
+      
+    }
+
+  </style>
+</head>
+<body style="background-color: aquamarine;">
+  <h1> Welcome To Question Paper Generator</h1>
+  
+  
+  <button  onclick="redirectTo('addQuestion.html')">Add Question</button>
+  <button onclick="redirectTo('showQuestions.html')">Show Questions</button>
+  <button onclick="redirectTo('generateQuestion.html')">Generate Question</button>
+
+
+  <div id="result"></div>
+
+  <script>
+    function redirectTo(url) {
+      window.location.href = url;
+    }
+  </script>
+</body>
+</html>

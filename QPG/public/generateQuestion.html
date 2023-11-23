@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate Question Paper</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: darkgrey;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    textarea,
+    select,
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #downloadPdf {
+      background-color: #2ecc71;
+    }
+
+    #downloadPdf:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+  <h1>Generate Question Paper</h1>
+  <form id="generateQuestionPaperForm">
+    <label for="generateSubject">Subject:</label>
+    <select id="generateSubject" name="generateSubject" required>
+      <option value="Mathematics">Mathematics</option>
+      <option value="Physics">Physics</option>
+      <option value="Chemistry">Chemistry</option>
+    </select>
+
+    <label for="totalMarks">Total Marks:</label>
+    <input type="number" id="totalMarks" name="totalMarks" required>
+
+    <label for="easyMarks">Easy Marks:</label>
+    <input type="number" id="easyMarks" name="easyMarks" required>
+
+    <label for="mediumMarks">Medium Marks:</label>
+    <input type="number" id="mediumMarks" name="mediumMarks" required>
+
+    <label for="hardMarks">Hard Marks:</label>
+    <input type="number" id="hardMarks" name="hardMarks" required>
+
+    <button type="button" onclick="generateQuestionPaper()">Generate Question Paper</button>
+    <button type="button" id="downloadPdf" onclick="downloadPdf()">Download PDF</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+  <script src="generateQuestion.js"></script>
+
+</body>
+</html>

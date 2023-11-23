@@ -1,0 +1,41 @@
+const express = require('express');
+const router = express.Router();
+const { addQuestion, getQuestionsBySubject, generateQuestionPaper } = require('./routes/queries');
+
+// Route to add a question
+router.post('/add', async (req, res) => {
+  const questionData = req.body;
+  try {
+    const questionId = await addQuestion(questionData);
+    res.json({ id: questionId, message: 'Question added successfully' });
+  } catch (error) {
+    console.error('Error adding question:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Route to get questions by subject
+router.get('/show', async (req, res) => {
+  const { subject } = req.query;
+  try {
+    const questions = await getQuestionsBySubject(subject);
+    res.json(questions);
+  } catch (error) {
+    console.error('Error fetching questions:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Route to generate a question paper
+router.get('/generate', async (req, res) => {
+  const { subject, totalMarks, easyMarks, mediumMarks, hardMarks } = req.query;
+  try {
+    const questionPaper = await generateQuestionPaper(subject, totalMarks, easyMarks, mediumMarks, hardMarks);
+    res.json(questionPaper);
+  } catch (error) {
+    console.error('Error generating question paper:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+module.exports = router;
